@@ -12,10 +12,11 @@ const port = env === 'development' ? 4001 : process.env.PORT;
 
 
 
-// mongoose instance connection url connection
-mongoose.Promise = global.Promise;
+// bluebird to add supoort for promises with queries
+mongoose.Promise = require('bluebird');
+assert.equal(query.exec().constructor, require('bluebird'));
 
-// DB CONNECTION STRING
+// DB CONNECTION INSTANCE
 mongoose.connect('mongodb://localhost/MemeMakerDB');
 
 
