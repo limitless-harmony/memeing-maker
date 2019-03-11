@@ -1,15 +1,24 @@
 import User from '../models/User';
 import { ResponseError, ResponseSuccess } from '../helpers/Responses';
 
+/**
+ * [UserController description]
+ */
 class UserController {
-  static async getUsers(req, res){
+  /**
+   * [getUsers description]
+   * @param  {[type]}  req [description]
+   * @param  {[type]}  res [description]
+   * @return {Promise}     [description]
+   */
+  static async getUsers(req, res) {
     let users = [];
-    try{
+    try {
       users = await User.find();
-    } catch(error){
-      return res.status(400).json(ResponseError(400,err,'Could not fetch users'))
+    } catch (error) {
+      return res.status(400).json(ResponseError(400, error, 'Could not fetch users'));
     }
-    return return res.status(200).json(ResponseSuccess(200,users,'No users found'))
+    return res.status(200).json(ResponseSuccess(200, users, 'users found'));
   }
 }
 

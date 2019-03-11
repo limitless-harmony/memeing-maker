@@ -16,6 +16,6 @@ const User = new Schema({
 });
 
 // Add full text search
-User.index({'$**': 'text'});
+User.index({ '$**': 'text' });
 
 export default mongoose.model('User', User);
