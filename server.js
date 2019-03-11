@@ -17,3 +17,14 @@ mongoose.Promise = global.Promise;
 
 // DB CONNECTION STRING
 mongoose.connect('mongodb://localhost/MemeMakerDB');
+
+
+app.use(bodyParser.json({limit : '50mb'}));
+app.use(bodyParser.urlencoded({extended : true}));
+
+
+app.get('/', (req, res) => res.send('Send memes'))
+
+app.listen(port, () => console.log(`Memeing Server is listening on port ${port}!`))
+
+export default app;
